@@ -1,0 +1,117 @@
+/* ZeroDrop theme — тёмная тема в стиле ggstand. Токены ниже общие для всех страниц. */
+:root{
+  --bg:#14111a;
+  --surface:#1e1a26;
+  --surface-2:#272231;
+  --line:rgba(255,255,255,.06);
+  --text:#f3f0f7;
+  --muted:#8d869b;
+  --accent:#f4a35e;
+  --accent-ink:#2a1a08;
+  --green:#7ed321; --yellow:#e8e03a; --orange:#f58a2f; --red:#d6334a;
+  --r-card:18px; --r-pill:12px;
+  --font-head:"Unbounded","Inter",system-ui,sans-serif;
+  --font-body:"Inter",system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+html{background:var(--bg)}
+body{
+  background:radial-gradient(120% 60% at 50% -10%,#2a2036 0%,var(--bg) 60%) fixed;
+  color:var(--text);font-family:var(--font-body);
+  padding:calc(env(safe-area-inset-top,0px) + 12px) 14px calc(110px + env(safe-area-inset-bottom,0px));
+  min-height:100vh;
+}
+a{color:inherit;text-decoration:none}
+.app{max-width:760px;margin:0 auto}
+
+/* верхняя панель */
+.topbar{display:flex;align-items:center;gap:10px;margin-bottom:14px}
+.topbar .logo img{height:38px;display:block}
+.topbar .user-panel{margin-left:auto;display:flex;align-items:center;gap:8px}
+.topbar .balance{display:flex;align-items:center;gap:6px;background:var(--surface);
+  border:1px solid var(--line);border-radius:var(--r-pill);padding:10px 14px}
+.topbar .balance-title{display:none}
+.balance-money{font-family:var(--font-head);font-weight:700;font-size:14px;color:var(--accent)}
+
+/* фильтр-строка */
+.toolbar{display:flex;gap:10px;margin-bottom:22px}
+.tool-btn,.tool-select{background:var(--surface);border:1px solid var(--line);
+  border-radius:var(--r-pill);height:50px;color:var(--muted);font:600 15px var(--font-body)}
+.tool-btn{width:50px;display:grid;place-items:center;cursor:pointer}
+.tool-select{flex:1;padding:0 16px;appearance:none;-webkit-appearance:none;outline:0;cursor:pointer;
+  background-image:linear-gradient(45deg,transparent 50%,var(--muted) 50%),linear-gradient(135deg,var(--muted) 50%,transparent 50%);
+  background-position:calc(100% - 22px) 22px,calc(100% - 16px) 22px;background-size:6px 6px;background-repeat:no-repeat}
+
+.section-title{font-family:var(--font-head);font-weight:800;font-size:19px;line-height:1.3;margin:6px 4px 18px}
+
+/* сетка кейсов */
+.case-grid{display:grid;grid-template-columns:1fr 1fr;gap:26px 12px}
+@media(min-width:620px){.case-grid{grid-template-columns:repeat(3,1fr)}}
+.case-tile{display:flex;flex-direction:column;align-items:center;text-align:center;cursor:pointer;
+  transition:transform .18s ease}
+.case-tile:active{transform:scale(.97)}
+.case-art{position:relative;width:100%;aspect-ratio:1/1;display:grid;place-items:center}
+.case-art::before{content:"";position:absolute;inset:14% 8% 6%;border-radius:50%;
+  background:radial-gradient(closest-side,rgba(244,163,94,.22),transparent 72%);filter:blur(6px)}
+.case-art img{position:relative;width:92%;height:92%;object-fit:contain;
+  filter:drop-shadow(0 10px 18px rgba(0,0,0,.55));transition:transform .25s ease}
+.case-tile:hover .case-art img{transform:translateY(-4px) scale(1.03)}
+.price-tag{position:absolute;left:50%;bottom:2%;transform:translateX(-50%);
+  background:var(--accent);color:var(--accent-ink);font:800 16px var(--font-head);
+  padding:8px 16px;border-radius:var(--r-pill);white-space:nowrap;box-shadow:0 6px 14px rgba(0,0,0,.4)}
+.tier{display:flex;gap:4px;margin:12px 0 8px;padding:4px 8px;background:var(--surface);border-radius:8px}
+.tier i{display:block;width:34px;height:5px;border-radius:3px;background:#3a3345}
+.tier i.on[data-c="0"]{background:var(--green)} .tier i.on[data-c="1"]{background:var(--yellow)}
+.tier i.on[data-c="2"]{background:var(--orange)} .tier i.on[data-c="3"]{background:var(--red)}
+.case-name{font:600 15px var(--font-body);color:var(--text);letter-spacing:.2px;padding:0 4px}
+.state{color:var(--muted);text-align:center;padding:40px 0}
+
+/* нижняя навигация */
+.bottom-nav{position:fixed;left:12px;right:12px;bottom:calc(10px + env(safe-area-inset-bottom,0px));
+  max-width:736px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr 1.6fr 1fr;align-items:center;
+  background:rgba(30,26,38,.92);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  border:1px solid var(--line);border-radius:22px;padding:8px 6px;z-index:20}
+.nav-item{display:flex;flex-direction:column;align-items:center;gap:4px;padding:6px 2px;
+  font:700 11px var(--font-body);letter-spacing:.8px;text-transform:uppercase;color:var(--muted)}
+.nav-item svg{width:26px;height:26px;fill:currentColor}
+.nav-item[aria-current="page"]{color:var(--accent)}
+.nav-cta{display:block;text-align:center;background:var(--accent);color:var(--accent-ink);
+  font:800 16px var(--font-body);padding:15px 10px;border-radius:var(--r-pill);margin:0 6px;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+
+/* счётчик онлайна (создаётся из common.js) */
+.online-badge{display:flex;align-items:center;gap:5px;background:var(--surface);
+  border:1px solid var(--line);border-radius:var(--r-pill);padding:10px 11px;
+  font:700 13px var(--font-body);color:var(--text)}
+.online-badge svg{width:16px;height:16px}
+
+/* внутренние страницы */
+main{max-width:760px;margin:0 auto}
+.case-page,.upgrade-page,.contracts-page,.profile-page{margin-top:6px!important;padding:0 2px!important;width:auto!important}
+h1.upgrade-title,h1.contracts-title,.case-hero h1{font-family:var(--font-head);font-weight:800;font-size:21px;text-align:center}
+.back{display:inline-block;margin-bottom:6px;color:var(--muted);font-weight:600;font-size:14px}
+.btn-open,.btn-upgrade,.btn-sign{background:var(--accent)!important;color:var(--accent-ink)!important;
+  border:0;border-radius:var(--r-pill)!important;font-family:var(--font-head);font-weight:800}
+.btn-open:disabled,.btn-upgrade:disabled,.btn-sign:disabled{opacity:.45}
+.roulette-wrap,.up-slot,.panel,.section-box,.contract-info,.multi-results,.content-item,.skin-card,.multi-card,.roll-card,.qty-btn,.btn-keep{
+  border-radius:var(--r-card)!important;border-color:var(--line)!important}
+.roulette-wrap::after{background:var(--accent)!important;box-shadow:0 0 18px var(--accent)!important}
+.qty-btn.active{background:var(--accent)!important;color:var(--accent-ink)!important}
+.case-hero img{width:min(62vw,240px)!important;height:auto!important;aspect-ratio:1}
+.case-hero .case-price{display:inline-block;background:var(--accent);color:var(--accent-ink)!important;
+  font-family:var(--font-head);padding:8px 18px;border-radius:var(--r-pill)}
+.contents-grid,.items-grid,.inv-grid{grid-template-columns:repeat(2,1fr)!important}
+@media(min-width:620px){.contents-grid,.items-grid,.inv-grid{grid-template-columns:repeat(3,1fr)!important}}
+.open-row button{width:100%}
+.up-slot{min-height:0!important;padding:16px!important}
+.up-item-preview img{max-height:120px;object-fit:contain}
+.upgrade-bottom{gap:14px!important}
+.chance-presets button,.up-controls input{border-radius:var(--r-pill)!important}
+.chance-value{color:var(--accent)!important}
+/* компактный верх страницы кейса: рулетка и кнопка видны без скролла */
+.case-hero{margin:4px 0 8px!important}
+.case-hero img{width:min(40vw,160px)!important}
+.case-hero h1{font-size:19px!important;margin-top:2px!important}
+.case-hero .case-price{margin-top:6px!important;padding:6px 16px!important;font-size:20px!important}
+.roulette-stack{margin:14px 0 8px!important}
+.open-row{margin:12px 0 6px!important}

@@ -1,0 +1,44 @@
+/* Профиль: перекраска под тёмную тему + мобильная раскладка (поверх profile.css) */
+.profile-page{width:auto!important;max-width:760px!important;margin:6px auto 0!important;padding:0!important}
+.profile-page::before,.profile-page::after,.inventory-item::before{display:none!important}
+.profile-header{display:flex!important;flex-direction:column!important;gap:14px!important;width:100%!important}
+.profile-card,.profile-right,.setting-card,.stat-card,.best-card,.inventory-section,.inventory-item,.steam-notice{
+  background:var(--surface)!important;border:1px solid var(--line)!important;border-radius:var(--r-card)!important;
+  box-shadow:none!important;width:100%!important;min-width:0!important;max-width:100%!important}
+.profile-right{background:transparent!important;border:0!important;padding:0!important;display:flex;flex-direction:column;gap:14px}
+.profile-card{padding:22px 16px!important;display:flex;flex-direction:column;align-items:center;text-align:center}
+.profile-card .avatar,.avatar{width:96px!important;height:96px!important;border-color:var(--accent)!important}
+.profile-balance{background:var(--surface-2)!important;border:0!important;border-radius:14px!important;width:100%!important;padding:14px!important}
+.profile-balance h2{color:var(--accent)!important;font-family:var(--font-head)!important;font-size:26px!important}
+.profile-buttons{display:flex!important;gap:10px!important;width:100%!important}
+.profile-buttons button,.deposit-btn,.history-btn,.promo-btn,.steam-login-btn,.steam-logout-btn,.btn-sell-all-inv,.sell-item{
+  flex:1;height:46px!important;min-height:46px;border:0!important;border-radius:var(--r-pill)!important;
+  font:700 14px var(--font-body)!important;display:inline-flex!important;align-items:center;justify-content:center;
+  cursor:pointer;text-decoration:none}
+.deposit-btn,.promo-btn,.steam-login-btn{background:var(--accent)!important;color:var(--accent-ink)!important}
+.history-btn,.steam-logout-btn,.btn-sell-all-inv{background:var(--surface-2)!important;color:var(--text)!important}
+.settings-grid{display:flex!important;flex-direction:column;gap:14px;width:100%}
+.setting-card{padding:14px!important;display:flex;flex-direction:column;gap:10px}
+.setting-title{color:var(--muted)!important;font:700 12px var(--font-body)!important;letter-spacing:.8px;text-transform:uppercase}
+.info-input{width:100%;height:46px;background:var(--surface-2)!important;border:1px solid var(--line)!important;
+  border-radius:var(--r-pill)!important;color:var(--text)!important;padding:0 14px;font:500 15px var(--font-body);outline:0}
+.info-input:focus{border-color:var(--accent)!important}
+.profile-stats{display:grid!important;grid-template-columns:1fr 1fr!important;gap:10px!important;width:100%}
+.stat-card{padding:14px!important;text-align:center}
+.stat-value{color:var(--accent)!important;font:800 18px var(--font-head)!important}
+.stat-name{color:var(--muted)!important;font-size:12px!important;margin-top:4px}
+.best-title,.inventory-header h2{font:800 17px var(--font-head)!important;margin:6px 4px 10px}
+.best-card{display:flex!important;align-items:center;gap:14px;padding:14px!important}
+.best-image img{width:84px;height:84px;object-fit:contain}
+.best-info h3{color:var(--accent)!important}
+.inventory-section{padding:14px!important;overflow:visible!important}
+.inventory-header{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.inventory-header-right{display:flex;align-items:center;gap:10px;color:var(--muted);font-size:13px}
+.btn-sell-all-inv{flex:none;padding:0 14px}
+.inventory-grid{display:grid!important;grid-template-columns:1fr 1fr!important;gap:10px!important;width:100%}
+@media(min-width:620px){.inventory-grid{grid-template-columns:repeat(3,1fr)!important}}
+.inventory-item{padding:10px!important;text-align:center;display:flex;flex-direction:column;gap:6px}
+.inventory-item img{width:100%!important;height:84px!important;object-fit:contain}
+.item-title{font:600 12px var(--font-body)!important;line-height:1.25}
+.item-price{color:var(--accent)!important;font:800 14px var(--font-body)!important}
+.sell-item{background:var(--surface-2)!important;color:var(--text)!important;height:36px!important;min-height:36px;font-size:12px!important}
