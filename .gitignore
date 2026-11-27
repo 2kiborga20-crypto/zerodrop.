@@ -1,4 +1,0 @@
-*.log
-.env
-data/users.json
-node_modules/
